@@ -19,9 +19,9 @@ BEGIN
     SELECT region_id FROM region where locality_name = 'test_locality3' limit 1
         INTO forced_region_id;
     RETURN QUERY SELECT autogen_region_id,
-						manualy_inserted_region_id_before_force,
-						forced_region_id,
-						manualy_inserted_region_id_after_force;
+			manualy_inserted_region_id_before_force,
+			forced_region_id,
+			manualy_inserted_region_id_after_force;
 END;
 $$ language 'plpgsql';
 
