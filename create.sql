@@ -37,7 +37,7 @@ CREATE TABLE product_price (
 	product_id INT,
 	market_id INT,
 	year INT CHECK(year > 1991),
-	month INT CHECK(month > 0 and month < 13),
+	month INT CHECK(month > 0 AND month < 13),
 	price NUMERIC(32, 2),
 	currency VARCHAR(3),
 	units VARCHAR(20),
