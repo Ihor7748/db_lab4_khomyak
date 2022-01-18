@@ -1,3 +1,5 @@
+DROP PROCEDURE IF EXISTS force_region_id;
+
 CREATE OR REPLACE PROCEDURE force_region_id(
 	region_i INT,
 	locality_n VARCHAR(100),
