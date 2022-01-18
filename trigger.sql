@@ -1,4 +1,5 @@
-CREATE SEQUENCE id_seq START WITH 1 INCREMENT 1;
+DROP TRIGGER IF EXISTS autogen_region_id on region;
+DROP FUNCTION IF EXISTS f_autogen_region_id;
 
 
 /* this trigger allows region_id to be either manualy entered
@@ -12,9 +13,9 @@ DECLARE
 BEGIN
 	SELECT nextval('id_seq') into next_val;
 	IF NEW.region_id >= next_val THEN
-		PERFORM setval('id_seq', new.product_id+1);
-	ELSIF NEW.product_id = 0 THEN
-		NEW.product_id = next_val;
+		PERFORM setval('id_seq', NEW.region_id+1);
+	ELSIF NEW.region_id = 0 THEN
+		NEW.region_id = next_val;
 	END IF;
 	RETURN NEW;
 END;
@@ -25,7 +26,6 @@ CREATE TRIGGER autogen_region_id
 	BEFORE INSERT ON region
 	FOR EACH ROW
 	EXECUTE PROCEDURE f_autogen_region_id();
-	
 	
 
 
