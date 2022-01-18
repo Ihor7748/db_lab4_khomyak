@@ -15,7 +15,7 @@ BEGIN
 	IF EXISTS (SELECT region_id FROM region WHERE region_id = region_i) THEN
     	SELECT region_id, locality_name, country_name FROM region into id, local_n, coun_n;
 		INSERT INTO region (region_id, locality_name, country_name)
-			VALUES (nextvalue('seq_id'), local_n, coun_n);
+			VALUES (nextval('seq_id'), local_n, coun_n);
 		UPDATE region 
 		SET
 			locality_name = locality_n,
