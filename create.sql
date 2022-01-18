@@ -27,14 +27,13 @@ CREATE TABLE market (
 
 
 CREATE TABLE product (
-	product_id INT,
 	product_name VARCHAR(100),
-	PRIMARY KEY(product_id)
+	PRIMARY KEY(product_name)
 );
 
 
 CREATE TABLE product_price (
-	product_id INT,
+	product_name VARCHAR(100),
 	market_id INT,
 	year INT CHECK(year > 1991),
 	month INT CHECK(month > 0 AND month < 13),
@@ -47,8 +46,8 @@ CREATE TABLE product_price (
 			REFERENCES market(market_id)
 			ON DELETE CASCADE,
 	CONSTRAINT fk_product
-		FOREIGN KEY(product_id)
-			REFERENCES product(product_id)
+		FOREIGN KEY(product_name)
+			REFERENCES product(product_name)
 			ON DELETE CASCADE
 
 );
