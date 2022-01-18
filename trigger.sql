@@ -11,7 +11,7 @@ $$
 DECLARE
 	next_val INT;
 BEGIN
-	SELECT nextval('id_seq') into next_val;
+	SELECT last_value FROM id_seq into next_val;
 	IF NEW.region_id >= next_val THEN
 		PERFORM setval('id_seq', NEW.region_id+1);
 	ELSIF NEW.region_id = 0 THEN
