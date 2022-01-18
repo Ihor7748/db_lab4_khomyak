@@ -58,9 +58,6 @@ CREATE SEQUENCE region_id_seq
 	START WITH 1 
 	INCREMENT BY 1;
 
-SELECT * from region_id_seq;
-SELECT * from region_id_seq;
-
 
 CREATE OR REPLACE FUNCTION f_autogen_region_id() RETURNS TRIGGER AS
 $$
