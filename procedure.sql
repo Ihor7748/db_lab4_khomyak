@@ -1,5 +1,5 @@
 -- Add information about new market and location simultaneously while generatin location_id
-CREATE OR REPLACE PROCEDURE add_new_location(
+CREATE OR REPLACE PROCEDURE add_market_generating_location(
     locality_n VARCHAR,
     country_n VARCHAR,
     market_i INT,
