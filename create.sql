@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS market CASCADE;
 DROP TABLE IF EXISTS region;
 DROP TABLE IF EXISTS product CASCADE;
 DROP TABLE IF EXISTS product_price;
-DROP SEQUENCE IF EXISTS region_id_seq;
+DROP SEQUENCE IF EXISTS id_seq;
 
 
 CREATE TABLE region (
@@ -40,7 +40,7 @@ CREATE TABLE product_price (
 	price NUMERIC(32, 2),
 	currency VARCHAR(3),
 	units VARCHAR(20),
-	PRIMARY KEY(product_id, market_id, year, month),
+	PRIMARY KEY(product_name, market_id, year, month),
 	CONSTRAINT fk_market
 		FOREIGN KEY(market_id)
 			REFERENCES market(market_id)
@@ -52,3 +52,4 @@ CREATE TABLE product_price (
 
 );
 
+CREATE SEQUENCE id_seq START WITH 1 INCREMENT 1;
