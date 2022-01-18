@@ -18,6 +18,7 @@ BEGIN
         INTO autogen_region_id;
     SELECT region_id FROM region where locality_name = 'test_locality3' limit 1
         INTO forced_region_id;
+	DELETE FROM region where locality_name like 'test_locality%';
     RETURN QUERY SELECT autogen_region_id,
 			manualy_inserted_region_id_before_force,
 			forced_region_id,
@@ -27,3 +28,4 @@ $$ language 'plpgsql';
 
 
 SELECT * FROM test();
+-- SELECT * FROM f(1871::INT, 2017::INT, 4::INT, 2017::INT, 11::INT);
