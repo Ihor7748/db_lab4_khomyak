@@ -1,21 +1,20 @@
--- Add information about new market and location simultaneously while generatin location_id
 CREATE OR REPLACE PROCEDURE force_region_id(
 	region_i INT,
 	locality_n VARCHAR(100),
-	counrty_n VARCHAR(100)
+	country_n VARCHAR(100)
 )
 LANGUAGE 'plpgsql'
 AS $$
 DECLARE
-	id INT;
+	id_ INT;
 	local_n VARCHAR(100);
 	coun_n VARCHAR(100);
 	next_val INT;
 BEGIN
 	IF EXISTS (SELECT region_id FROM region WHERE region_id = region_i) THEN
-    	SELECT region_id, locality_name, country_name FROM region into id, local_n, coun_n;
+    	SELECT region_id, locality_name, country_name FROM region where region_id = region_i into id_, local_n, coun_n;
 		INSERT INTO region (region_id, locality_name, country_name)
-			VALUES (nextval('seq_id'), local_n, coun_n);
+			VALUES (nextval('id_seq'), local_n, coun_n);
 		UPDATE region 
 		SET
 			locality_name = locality_n,
